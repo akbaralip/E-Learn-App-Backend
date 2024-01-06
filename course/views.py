@@ -123,7 +123,6 @@ class CourseListByCategory(APIView):
 
 class CourseListByChefs(APIView):
     def get(self, request, chefId):
-        print('Received chefId:', chefId)
         try:
             courses = Course.objects.filter(instructor=chefId, is_listed=True)
             serialized_courses = CourseSerializer(courses, many=True).data
