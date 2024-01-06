@@ -1,5 +1,3 @@
-
-
 from pathlib import Path
 import os
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -11,7 +9,9 @@ SECRET_KEY = 'django-insecure-c-$#c^+!kre_40$eg9xtc5y87lxkb$_5sde5k!sx9rp$tn4t^u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['52.90.157.120', '0.0.0.0', 'akbarali.shop', 'localhost']
+CSRF_TRUSTED_ORIGINS = ['https://akbarali.shop', 'https://chef-charisma-edu.vercel.app', 'http://akbarali.shop', 'http://52.90.157.120']
+
 
 
 # Application definition
@@ -131,12 +131,13 @@ ASGI_APPLICATION = "backend.asgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'e_learn',
-        'USER': 'postgres',
+        'NAME': 'chefcharismadb',
+        'USER': 'postgress',
         'PASSWORD': '6530',
         'HOST': 'localhost',
     }
 }
+
 
 
 
@@ -192,11 +193,13 @@ EMAIL_HOST_USER = 'akbaralip7777@gmail.com'
 EMAIL_HOST_PASSWORD = 'swth qmqb zjjo liqj'
 
 
-SITE_URL ='http://localhost:5173'
+SITE_URL ='https://chef-charisma-edu.vercel.app'
+
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+DATA_UPLOAD_MAX_MEMORY_SIZE = 100 * 1024 * 1024
 
 APPEND_SLASH = False
 

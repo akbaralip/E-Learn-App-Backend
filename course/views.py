@@ -121,6 +121,16 @@ class CourseListByCategory(APIView):
         except Exception as e:
             return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+class CourseListByChefs(APIView):
+    def get(self, request, chefId):
+        print('Received chefId:', chefId)
+        try:
+            courses = Course.objects.filter(instructor=chefId, is_listed=True)
+            serialized_courses = CourseSerializer(courses, many=True).data
+            return Response(serialized_courses, status=status.HTTP_200_OK)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 
 class CoursesVideosView(APIView):

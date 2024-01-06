@@ -11,7 +11,9 @@ urlpatterns = [
     path('chef_course_Unlist/<int:user_id>/', ChefUnListCourseView.as_view(), name='chef_course_Unlist'),
     path('chef_course_listed/<int:user_id>/', ChefListedCourseView.as_view(), name='chef_course_listed'),
 
+    path('chef/courses/<int:chefId>/', CourseListByChefs.as_view(), name='course-list-by-chefs'),
     path('courses/category/<int:category>/', CourseListByCategory.as_view(), name='course-list-by-category'),
+
     path('courses_videos/<int:course_id>/', CoursesVideosView.as_view(), name='courses_videos'),
 
     path('edit_course_video/<int:video_id>/', EditCourse.as_view(), name='edit_course_video'),
