@@ -44,7 +44,7 @@ class StripeCheckoutView(APIView):
 
                 cancel_url=settings.SITE_URL + '/?canceled=true',
             )
-            
+            #j
             # payment = Payment.objects.create(
             #     course=course,
             #     user=user_instance,
