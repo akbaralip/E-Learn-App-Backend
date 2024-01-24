@@ -83,7 +83,7 @@ class SuccessCheckOut(APIView):
                 payment_date=timezone.now(),
             )
             payment.save()
-            success_url=settings.SITE_URL + '/mylearnings/?success=true&session_id={CHECKOUT_SESSION_ID}',
+            success_url=settings.SITE_URL + '/mylearnings/?success=true&session_id={CHECKOUT_SESSION_ID}'
             return redirect(success_url)
         except Exception as e:
             print(e)
