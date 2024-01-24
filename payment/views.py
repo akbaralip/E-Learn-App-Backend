@@ -40,7 +40,7 @@ class StripeCheckoutView(APIView):
                 mode='payment',
                 # success_url=settings.SITE_URL + '/mylearnings/?success=true&session_id={CHECKOUT_SESSION_ID}',
 
-                success_url=f'https://akbarali.shop/success-checkout/?success=true&session_id={{CHECKOUT_SESSION_ID}}&course={course}&coursePrice={coursePrice}&user_instance={user_instance}&course_instructor={course_instructor}',
+                success_url=f'https://akbarali.shop/api/stripe/success-checkout/?success=true&session_id={{CHECKOUT_SESSION_ID}}&course={course}&coursePrice={coursePrice}&user_instance={user_instance}&course_instructor={course_instructor}',
 
                 cancel_url=settings.SITE_URL + '/?canceled=true',
             )
