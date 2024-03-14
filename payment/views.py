@@ -141,11 +141,6 @@ class SuccessCheckOut(APIView):
             course_price = course.price
             course_instructor = course.instructor
 
-            print(f'course: {course.title}')
-            print(f'user_price: {course_price}')
-            print(f'user_instance: {user_instance.username}')
-            print(f'course_instructor: {course_instructor}')
-            print(f'checkout_session_id: {checkout_session_id}')
 
             payment = Payment.objects.create(
                 course=course,
