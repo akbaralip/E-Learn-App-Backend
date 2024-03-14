@@ -9,8 +9,8 @@ SECRET_KEY = 'django-insecure-c-$#c^+!kre_40$eg9xtc5y87lxkb$_5sde5k!sx9rp$tn4t^u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['52.90.157.120', '0.0.0.0', 'akbarali.shop', 'localhost']
-CSRF_TRUSTED_ORIGINS = ['https://akbarali.shop', 'https://chef-charisma-edu.vercel.app', 'http://akbarali.shop', 'http://52.90.157.120']
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://chefcharisma.akbarali.shop', 'https://chef-charisma-edu.vercel.app', 'https://www.chefcharisma.akbarali.shop', 'http://13.48.55.190']
 
 
 
@@ -127,14 +127,25 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 ASGI_APPLICATION = "backend.asgi.application"
 
 
+#local host
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'chefcharismadb',
+#         'USER': 'postgress',
+#         'PASSWORD': '6530',
+#         'HOST': 'localhost',
+#     }
+# }
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'chefcharismadb',
-        'USER': 'postgress',
-        'PASSWORD': '6530',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'myproject',
+        'USER': 'myprojectuser',
+        'PASSWORD': 'password',
         'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
