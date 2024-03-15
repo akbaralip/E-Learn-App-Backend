@@ -1,9 +1,11 @@
 from pathlib import Path
 import os
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 from datetime import timedelta
 from decouple import config
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
 
 SECRET_KEY = 'django-insecure-c-$#c^+!kre_40$eg9xtc5y87lxkb$_5sde5k!sx9rp$tn4t^u'
 
@@ -209,7 +211,6 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 100 * 1024 * 1024
 APPEND_SLASH = False
 
 #Gmail
-EMAIL_BACKEND = config('EMAIL_BACKEND')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_PORT = config('EMAIL_PORT')  
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
