@@ -3,6 +3,7 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 from datetime import timedelta
+from decouple import config
 
 SECRET_KEY = 'django-insecure-c-$#c^+!kre_40$eg9xtc5y87lxkb$_5sde5k!sx9rp$tn4t^u'
 
@@ -36,6 +37,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
 
     "corsheaders",
+    'decouple',
 ]
 
 REST_FRAMEWORK = {
@@ -196,15 +198,7 @@ AUTH_USER_MODEL = 'users.User'
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'  
-EMAIL_PORT = 587  
-EMAIL_USE_TLS = True  
-EMAIL_HOST_USER = 'akbaralip7777@gmail.com'
-EMAIL_HOST_PASSWORD = 'swth qmqb zjjo liqj'
 
-
-SITE_URL ='https://chef-charisma-edu.vercel.app'
 
 
 
@@ -214,10 +208,18 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 100 * 1024 * 1024
 
 APPEND_SLASH = False
 
+#Gmail
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')  
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
-STRIPE_SECRET_KEY ='sk_test_51OIolMSIA0JVuA4cNIBtET7ET7Gnxhlf3WH0KOdxQN5FOEkuPtnXEK55mGFO0Uasxz4Eb5f36nbcShIJVFHVzenS00IDOHwL2x'
+#Stripe
+STRIPE_SECRET_KEY = config('STRIPE_SECRET_KEY')
 
-
+SITE_URL ='https://chef-charisma-edu.vercel.app'
 BASE_URL = 'http://localhost:8000'
 
 
