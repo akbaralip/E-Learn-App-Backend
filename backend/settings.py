@@ -139,6 +139,7 @@ ASGI_APPLICATION = "backend.asgi.application"
 #         'USER': 'postgress',
 #         'PASSWORD': '6530',
 #         'HOST': 'localhost',
+#         'PORT': '5432',
 #     }
 # }
 
