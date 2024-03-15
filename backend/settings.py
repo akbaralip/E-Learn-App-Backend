@@ -212,6 +212,7 @@ DATA_UPLOAD_MAX_MEMORY_SIZE = 100 * 1024 * 1024
 APPEND_SLASH = False
 
 #Gmail
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_HOST = config('EMAIL_HOST')
 EMAIL_HOST_USER = config('EMAIL_HOST_USER')
