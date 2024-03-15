@@ -13,6 +13,10 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 CSRF_TRUSTED_ORIGINS = ['https://chefcharisma.akbarali.shop', 'https://chef-charisma-edu.vercel.app', 'https://www.chefcharisma.akbarali.shop', 'http://13.48.55.190']
 
+#allowed origin
+CORS_ALLOWED_ORIGINS = [
+    'https://chef-charisma-edu.vercel.app',
+]
 
 
 # Application definition
