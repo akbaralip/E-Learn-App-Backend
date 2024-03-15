@@ -210,7 +210,7 @@ class ResetPassword(APIView):
 class ChefListView(APIView):
     def get(self, request, *args, **kwargs):
         try:
-            chefs = User.objects.filter(is_chef=True)
+            chefs = User.objects.filter(is_chef=True).order_by('id')[:4]
             chef_list = []
 
             for chef in chefs:
