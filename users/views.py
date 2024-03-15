@@ -152,39 +152,39 @@ class OtpVerificationView(APIView):
 
 class ForgetPasswordView(APIView):
      def post(self,request):
-          try:
-               email = request.data.get('email')   
-               myuser=User.objects.filter(email=email).first()
-               
-               current_site = get_current_site(request)
-               email_subject = 'confirm Your email @ Chef-Charisma'
-               message2 = render_to_string('forgot_password_mail.html',{
-                    'name': myuser.username ,   
-                    'domain': current_site.domain ,
-                    'uid': urlsafe_base64_encode(force_bytes(myuser.pk)),
-                    'token': generate_token.make_token(myuser),
-               })
-               email = EmailMessage(
-                    email_subject,message2,
-                    settings.EMAIL_HOST_USER,
-                    [myuser.email] 
-               )
+            try:
+                email = request.data.get('email')   
+                myuser=User.objects.filter(email=email).first()
+                
+                current_site = get_current_site(request)
+                email_subject = 'confirm Your email @ Chef-Charisma'
+                message2 = render_to_string('forgot_password_mail.html',{
+                        'name': myuser.username ,   
+                        'domain': current_site.domain ,
+                        'uid': urlsafe_base64_encode(force_bytes(myuser.pk)),
+                        'token': generate_token.make_token(myuser),
+                })
+                email = EmailMessage(
+                        email_subject,message2,
+                        settings.EMAIL_HOST_USER,
+                        [myuser.email] 
+                )
 
-               email.fail_silently = True
-               email.send()
+                email.fail_silently = True
+                email.send()
 
-               return Response({'message': 'email sent successfully'}, status=status.HTTP_200_OK)
-          except Exception as e:
-               return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+                return Response({'message': 'email sent successfully'}, status=status.HTTP_200_OK)
+            except Exception as e:
+                return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 def forgot_password_mail_view(request,uidb64,token):
-     try:
+    try:
         uid=force_str(urlsafe_base64_decode(uidb64))
         myuser=User.objects.get(pk=uid)
-     except(TypeError,ValueError,OverflowError, User.DoesNotExist):
+    except(TypeError,ValueError,OverflowError, User.DoesNotExist):
         myuser=None
-     if myuser is not None and generate_token.check_token(myuser,token):
+    if myuser is not None and generate_token.check_token(myuser,token):
         
         session = settings.SITE_URL + '/change_password/?uidb64=' + uidb64
         
@@ -192,20 +192,19 @@ def forgot_password_mail_view(request,uidb64,token):
 
 
 class ResetPassword(APIView):
-     def post(self,request):
-          password = request.data.get('password')
-          uidb64 = request.data.get('uidb64')
-          try:
-               uid=force_str(urlsafe_base64_decode(uidb64))
-               myuser=User.objects.get(pk=uid)
-          except(TypeError,ValueError,OverflowError, User.DoesNotExist):
-               myuser=None
-          if myuser is not None:
+    def post(self,request):
+        password = request.data.get('password')
+        uidb64 = request.data.get('uidb64')
+        try:
+            uid=force_str(urlsafe_base64_decode(uidb64))
+            myuser=User.objects.get(pk=uid)
+        except(TypeError,ValueError,OverflowError, User.DoesNotExist):
+            myuser=None
+        if myuser is not None:
             myuser.set_password(password)
             myuser.save()
-
             return JsonResponse({'message': 'Password reset successfully'}, status=200)
-          else:
+        else:
             return JsonResponse({'error': 'Invalid or expired reset link'}, status=400)
 
 class ChefListView(APIView):
