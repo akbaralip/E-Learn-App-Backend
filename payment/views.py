@@ -121,7 +121,7 @@ class StripeCheckoutView(APIView):
                 ],
                 payment_method_types=['card', ],
                 mode='payment',
-                success_url=f'https://akbarali.shop/api/stripe/success-checkout/?success=true&session_id={{CHECKOUT_SESSION_ID}}&courseId={course.id}&user={user_instance.username}',
+                success_url=f'https://timecharm.akbarali.shop/api/stripe/success-checkout/?success=true&session_id={{CHECKOUT_SESSION_ID}}&courseId={course.id}&user={user_instance.username}',
                 cancel_url=settings.SITE_URL + '/?canceled=true',
             )
 
